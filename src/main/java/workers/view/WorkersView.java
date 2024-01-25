@@ -7,7 +7,7 @@ public class WorkersView {
         System.out.println("MENU");
         System.out.println("\t1. LISTA PRACOWNIKÓW");
         System.out.println("\t2. DODAJ PRACOWNIKA");
-        System.out.println("\t3. USUŃ PRACOWNIKA");
+        System.out.println("\t3. USUN PRACOWNIKA");
         System.out.println("\t4. KOPIA ZAPASOWA");
         System.out.println("WYBÓR>");
     }

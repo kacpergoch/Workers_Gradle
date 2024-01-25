@@ -157,7 +157,7 @@ public class WorkersController {
 
                     do {
                         if (scanForInput.nextLine().equals("u")) {
-                            Repository.getEmployees().remove(employee);
+                            Repository.removeEmployee(employee);
                             exit = true;
                             break;
                         }

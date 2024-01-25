@@ -41,46 +41,50 @@ public class InputValidation {
             return false;
         }
     }
-    private static void validateString(String str){
-        if (str.matches(".*[^\\w].*")){
+
+    public static void validateString(String str){
+        if (!str.matches("^[a-zA-Z]+$")){
             throw new IllegalArgumentException("Wrong input");
         }
     }
 
-    private static void validateInt(String str){
-
-        if (!(str != null && str.matches("[0-9.]+"))){
-            throw new RuntimeException("Input is not numeric");
+    public static void validateInt(String str){
+        if (!str.matches("[0-9]+")){
+            throw new IllegalArgumentException("Input is not numeric");
         }
     }
 
-    private static void validatePesel(String str){
+    public static void validatePesel(String str){
         char[] pesel = str.toCharArray();
+        if (pesel.length != 11) {
+            throw new IllegalArgumentException("Wrong PESEL length");
+        }
         validateInt(str);
+
         boolean flag = !(((pesel[0] + 3*pesel[1] + 7*pesel[2] + 9*pesel[3] + pesel[4] + 3*pesel[5] +
                 7*pesel[6] + 9*pesel[7] + pesel[8] + 3*pesel[9] + pesel[10] ) % 10) == 0);
-        
+
         if (flag){
             throw new IllegalArgumentException("Wrong PESEL");
         }
     }
 
-    private static void validateCard(String str){
+    public static void validateCard(String str){
         if (!str.matches("[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{3}")) {
             throw new IllegalArgumentException("Wrong card number");
         }
     }
 
-    private static void validatePhone(String str){
+    public static void validatePhone(String str){
         if (!str.matches("[0-9]{9}")) {
             throw new IllegalArgumentException("Wrong phone number");
         }
     }
 
-    private static void validateCommission(String str){
+    public static void validateCommission(String str){
         validateInt(str);
         int commission = Integer.parseInt(str);
-        if (commission < 0 || commission > 100){
+        if (commission <= 0 || commission > 100){
             throw new IllegalArgumentException("Wrong argument: percentage out of range");
         }
     }
